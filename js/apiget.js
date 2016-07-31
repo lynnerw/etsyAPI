@@ -33,6 +33,10 @@
       listingTitle.text(item.title);
       listingTitle.html('<p>Listing title is ' + item.title + '</p>');
 
+      var listingDesc = result.find('.listing-desc');
+      listingDesc.text(item.description);
+      listingDesc.html('<p>Listing title is ' + item.description + '</p>');
+
     	return result;
   };  // end showInfo
 
