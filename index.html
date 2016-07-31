@@ -6,35 +6,17 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div itemscope itemtype="https://schema.org/CivicStructure">
-		<!-- About Balboa Park -->
-		<h1 itemprop="name">Balboa Park</h1>
-		<p>Where is Balboa Park? <a itemprop="hasMap" target="_blank" href="http://www.balboapark.org/maps">San Diego, California</a></p>
-		<p>What is Balboa Park?</p>
-		<ul>
-				<li>1,200 acres (490 hectares)</li>
-				<li>13 museums</li>
-				<li>16 gardens and an indoor botanical garden</li>
-		</ul>
-		<p>Not enough?</p>
-		<p>Balboa Park also has:</p>
-		<ul>
-				<li itemprop="zoo">The world famous San Diego Zoo</li>
-				<li>An art institute</li>
-				<li>A history center</li>
-				<li>Three cultural centers</li>
-				<li>An amphitheater, a Shakespearean theater, and a pupper theater</li>
-				<li>A stadium and a pavilion</li>
-				<li>Like sports? It has a golf courses, ball fields, tennis courts, archery ranges and a swimming pool.</li>
-		</ul>
-		<p>Over 12 million people visit the Balboa Park every year; why not you?</p>
-		<p>Search on a topic of interest and see what Balboa Park has to offer to you.</p>
-</div> <!-- end schema itemtype = civicstructure -->
+<header>
+		<!-- About the app -->
+		<h1>Seasoned and Sassy</h1>
+		<p>Ever wonder who writes those fashion "rules"?</p>
+		<p>Ignore the self-appointed fashion police. What better place than the Etsy online market to find the fashion and accessories that flaunt convention? </p>
+</header>
 
 <!-- get input from user -->
-<form class="topic-finder">
-	<input type="text" placeholder="Enter 'zoo' or 'art' or 'music'..." name="topic" size="30" autofocus required>
-	<input type="submit" value="Search Balboa Park">
+<form class="etsy-search">
+	<input type="text" placeholder="e.g., jacket or jewelry..." name="terms" size="30" autofocus required>
+	<input type="submit" value="Search Etsy">
 </form>
 
 <!-- displaying content returned from the api call -->
@@ -43,7 +25,7 @@
 
 <!-- create hidden templates to store api get results -->
 <div class="templates hidden">  <!-- 'templates' class referenced in apiget.js, 'hidden' class declared in css -->
-			<dl class="result info">  <!-- 'result' class declared in css, 'info' class referenced in apiget.js -->
+			<dl class="results itemInfo">  <!-- 'results' class declared in css, 'info' class referenced in apiget.js -->
 				<dt>Info</dt>  <!-- displays content returned -->
 					<dd class="display-info"></dd>
 			</dl>

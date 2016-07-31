@@ -2,16 +2,19 @@
 
   var showInfo = function(item) {
     	// clone our result template code
-    	var result = $('.templates .info').clone();
-    	// display user's display name with link
-    	var fashionFind = result.find('.display-name');
+    	var listingResult = $('.templates .itemInfo').clone();
 
-    	return result;
+    	// display user's display name with link
+    	var fashionFind = listingResult.find('.display-info');
+      fashionFind.text(item.title);
+      fashionFind.html('<p>Listing description is ' + item.title + '</p>');
+
+    	return listingResult;
   };  // end showInfo
 
   // parse the results object returned and determine number of results to be appended to DOM
   var showSearchResults = function(query, resultNum) {
-      var results = resultNum + ' results for <strong>' + query ' </strong> :';
+      var results = ('<p>' + resultNum + ' results for <strong>' + query + ' </strong></p>');
       return results;
   };
 
@@ -22,28 +25,24 @@
       errorElem.append(errorText);
   };
 
-  // sends a string of tag(s) (semi-colon separated) in "get unanswered questions" call to stackexchange
-  var getInfo = function() {  // tags is a string containing one or more user submitted tags
-
-  	// the data: parameters passed in ajax request
-  	/*var request = {
-  		tag: 'Animals',   //ind questions tagged with a string array of tag(s) submitted by user and passed into this function
-    };*/
+  var getListings = function(tags) {  // string containing one or more user submitted tags
 
     // deferred object var created
     $.ajax({
-      	url: "https://openapi.etsy.com/v2/users/etsystore?api_key=zzpidsxxocmwbq8elilcx1il", //specifies the domain and end point method
-        type: "GET",
+      	url: "https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&api_key=zzpidsxxocmwbq8elilcx1il", //specifies the domain and end point method
+        dataType: "jsonp",
+        data: "GET",
     })
 
-	  .done(function(result){  // wait for successful return of objects
-        console.log(result);
+	  .done(function(results){  // wait for successful return of objects
+        console.log(results.results);
 
-        var searchResults = showSearchResults(result.count);
+        var searchResults = showSearchResults(tags, results.count);
         $('.search-results').html(searchResults);
 
-        $.each(result.ct, function(i, item) { //$.each executes the function passed in once for each item in array passed in
-      	    var itemInfo = showInfo(item);
+        $.each(results.results, function(i, listing) { //$.each executes the function passed in once for each item in array passed in
+      	  //  console.log(results.results.description);
+            var itemInfo = showInfo(listing);
       	    $('.results').append(itemInfo);
         });
 
@@ -57,13 +56,13 @@
 }; // end getInfo
 
 $(document).ready( function() {
-    $('.topic-finder').submit( function(e){
+    $('.etsy-search').submit( function(e){
     		e.preventDefault();
     		// zero out results container, including # of results, if previous search has run
         $('.results').html('');
     		// get the value of the tags the user submitted and pass as parameter in ajax call
-    		var tag = $(this).find("input[name='topic']").val();
+    		var searchTerms = $(this).find("input[name='terms']").val();
 
-    		getInfo();
+    		getListings(searchTerms);
 	  });
 });
