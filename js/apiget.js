@@ -8,8 +8,8 @@
     })
     .done(function(results){  // wait for successful return of objects
         console.log(results.results);
-        var searchResults = showSearchResults(tags, results.count);
-        $('.search-results').html(searchResults);
+        var searchResultsQty = NumSearchResults(tags, results.count);
+        $('.search-results-qty').html(searchResultsQty);
 
         $.each(results.results, function(i, listing) {
             var itemInfo = showInfo(listing);
@@ -20,7 +20,7 @@
 
     .fail(function(jqXHR, error)  { //this waits for the ajax to return with an error promise object
         var errorElem = showError(error);
-        $('.search-results').append(errorElem);
+        $('.search-results-qty').append(errorElem);
     });  // end fail
 
   }; // end getListings
@@ -29,17 +29,17 @@
     	// clone result in hidden template and put into DOM
     	var result = $('.templates .itemInfo').clone();
 
-    	var fashionFind = listingResult.find('.listing-title');
-      fashionFind.text(item.title);
-      fashionFind.html('<p>Listing title is ' + item.title + '</p>');
+    	var listingTitle = result.find('.listing-title');
+      listingTitle.text(item.title);
+      listingTitle.html('<p>Listing title is ' + item.title + '</p>');
 
     	return result;
   };  // end showInfo
 
   // determine number of results to be appended to DOM element
-  var showSearchResults = function(query, resultNum) {
-      var results = ('<p>' + resultNum + ' results for <strong>' + query + ' </strong></p>');
-      return results;
+  var NumSearchResults = function(query, resultNum) {
+      var resultsQty = ('<p>' + resultNum + ' results for <strong>' + query + ' </strong></p>');
+      return resultsQty;
   };
 
   // captures error string and put it into DOM element
@@ -53,7 +53,7 @@ $(document).ready( function() {
     $('.etsy-search').submit( function(e){
     		e.preventDefault();
     		// clear results container, including # of results, if previous search has run
-        $('.results-list').html('');
+        $('.results').html('');
     		// get user search terms for ajax call
     		var searchTerms = $(this).find("input[name='terms']").val();
 

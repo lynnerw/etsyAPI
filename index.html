@@ -20,17 +20,19 @@
 </form>
 
 <!-- displaying content returned from the api call -->
-<div class="search-results"></div>  <!-- displays number of results for the search -->
+<div class="search-results-qty"></div>  <!-- displays number of results for the search -->
 <div class="results"></div>  <!-- displays the actual results -->
 
 <!-- create hidden templates to store api get results -->
 <div class="templates hidden">  <!-- 'templates' class referenced in apiget.js, 'hidden' class declared in css -->
 			<dl class="results-list itemInfo">  <!-- 'results' class declared in css, 'info' class referenced in apiget.js -->
-				<dt>Info</dt>  <!-- displays content returned -->
-					<dd class="display-info"></dd>
+					<dt>Listing title:</dt>
+					<dd class="listing-title"></dd>
+					<dt>Listing description:</dt>
+					<dd class="listing-desc"></dd>
 			</dl>
 			<div class="error-msg">
-				<p>Uh-oh! Something went wrong with your request. Here's what we know:</p>
+					<p>Uh-oh! Something went wrong with your request. Here's what we know:</p>
 			</div>
 </div>
 
