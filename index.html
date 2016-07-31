@@ -19,16 +19,18 @@
 	<input type="submit" value="Search Etsy">
 </form>
 
-<!-- displaying content returned from the api call -->
-<div class="search-results-qty"></div>  <!-- displays number of results for the search -->
-<div class="results"></div>  <!-- displays the actual results -->
+<!-- display # of results and content returned from api call -->
+<div class="search-results-qty"></div>
+<div class="results"></div>
 
 <!-- create hidden templates to store api get results -->
 <div class="templates hidden">  <!-- 'templates' class referenced in apiget.js, 'hidden' class declared in css -->
 			<dl class="results-list itemInfo">  <!-- 'results' class declared in css, 'info' class referenced in apiget.js -->
 					<dt>Fashion Find:</dt>
 					<dd class="listing-title"></dd>
-					<dt><br>Why it's awesome:</dt>
+					<!-- <dt></dt>
+					<dd class="listing-img"></dd> -->
+					<dt>Why it's awesome:</dt>
 					<dd class="listing-desc"></dd>
 			</dl>
 			<div class="error-msg">

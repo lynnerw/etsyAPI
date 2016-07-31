@@ -31,8 +31,7 @@
     	var listingTitle = result.find('.listing-title');
       listingTitle.text(item.title).html('<p><a target=_"blank" href=' + item.url + '>' + item.title + '</a>');
 
-      var listingDesc = result.find('.listing-desc');
-      listingDesc.text(item.description).html(item.description);
+      //var listingImg = result.find('.listing-img');
 
       var listingDesc = result.find('.listing-desc');
       listingDesc.text(item.description).html(item.description);
