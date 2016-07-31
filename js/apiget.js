@@ -1,4 +1,4 @@
-  // api request
+  // make api request and put returned object into hidden template
   var getListings = function(tags) {  // string containing one or more user submitted tags
 
     $.ajax({
@@ -15,34 +15,34 @@
             var itemInfo = showInfo(listing);
             $('.results').append(itemInfo);
         });
+    })
 
-    })  // end done
-
-    .fail(function(jqXHR, error)  { //this waits for the ajax to return with an error promise object
+    .fail(function(jqXHR, error)  { //if request returns an error, append to DOM element
         var errorElem = showError(error);
         $('.search-results-qty').append(errorElem);
-    });  // end fail
+    });
 
   }; // end getListings
 
+  // clone result in hidden template and put into DOM element
   var showInfo = function(item) {
-    	// clone result in hidden template and put into DOM
     	var result = $('.templates .itemInfo').clone();
 
     	var listingTitle = result.find('.listing-title');
-      listingTitle.text(item.title);
-      listingTitle.html('<p>Listing title is ' + item.title + '</p>');
+      listingTitle.text(item.title).html('<p><a target=_"blank" href=' + item.url + '>' + item.title + '</a>');
 
       var listingDesc = result.find('.listing-desc');
-      listingDesc.text(item.description);
-      listingDesc.html('<p>Listing title is ' + item.description + '</p>');
+      listingDesc.text(item.description).html(item.description);
+
+      var listingDesc = result.find('.listing-desc');
+      listingDesc.text(item.description).html(item.description);
 
     	return result;
   };  // end showInfo
 
   // determine number of results to be appended to DOM element
   var NumSearchResults = function(query, resultNum) {
-      var resultsQty = ('<p>' + resultNum + ' results for <strong>' + query + ' </strong></p>');
+      var resultsQty = ('<p>Showing 10 of ' + resultNum + ' results for <strong>' + query + ' </strong></p>');
       return resultsQty;
   };
 

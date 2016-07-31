@@ -13,3 +13,10 @@
 	background-color: #F78181;
 	padding: 1em;
 }
+
+.search-results-qty {
+	background-color: lightgray;
+	border: 1px solid black;
+	padding: 2px;
+	margin: 1em auto 1em auto;
+}
