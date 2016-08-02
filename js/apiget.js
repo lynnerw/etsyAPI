@@ -2,11 +2,11 @@
   var getListings = function(tags) {  // string containing one or more user submitted tags
 
     $.ajax({
-        url: "https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&api_key=zzpidsxxocmwbq8elilcx1il", //specifies the domain and end point method
-//https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&includes=images:1&api_key=zzpidsxxocmwbq8elilcx1il"
+        url: "https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&includes=MainImage&api_key=zzpidsxxocmwbq8elilcx1il",
         dataType: "jsonp",
         data: "GET",
     })
+
     .done(function(results){  // wait for successful return of objects
         console.log(results.results);
         var searchResultsQty = NumSearchResults(tags, results.count);
@@ -29,13 +29,47 @@
   var showInfo = function(item) {
     	var result = $('.templates .itemInfo').clone();
 
-    	var listingTitle = result.find('.listing-title');
-      listingTitle.text(item.title).html('<p><a target=_"blank" href=' + item.url + '>' + item.title + '</a>');
+      var listingImg = result.find('.listing-img');
+      listingImg.html('<img src="' + item.MainImage.url_75x75 + '">');
 
-      //var listingImg = result.find('.listing-img');
+    	var listingTitle = result.find('.listing-title');
+      listingTitle.text(item.title).html('<a target=_"blank" href=' + item.url + '>' + item.title + '</a>');
 
       var listingDesc = result.find('.listing-desc');
       listingDesc.text(item.description).html(item.description);
+
+      // Display max of 300 chars and provide more/less option
+      var showChar = 300;
+      var ellipsestext = "...";
+      var moretext = "More >";
+      var lesstext = "Less";
+
+      $('.more').each(function() {
+          var content = $(this).html();
+
+          if(content.length > showChar) {
+
+              var c = content.substr(0, showChar);
+              var h = content.substr(showChar, content.length - showChar);
+
+              var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+              $(this).html(html);
+          }
+      });
+
+      $(".morelink").click(function(){
+          if($(this).hasClass("less")) {
+              $(this).removeClass("less");
+              $(this).html(moretext);
+          } else {
+              $(this).addClass("less");
+              $(this).html(lesstext);
+          }
+          $(this).parent().prev().toggle();
+          $(this).prev().toggle();
+          return false;
+      });
 
     	return result;
   };  // end showInfo
@@ -63,4 +97,5 @@ $(document).ready( function() {
 
     		getListings(searchTerms);
 	  });
+
 });
