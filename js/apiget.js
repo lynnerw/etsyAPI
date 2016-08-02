@@ -41,7 +41,7 @@
       // Display max of 300 chars and provide more/less option
       var showChar = 300;
       var ellipsestext = "...";
-      var moretext = "More >";
+      var moretext = "More";
       var lesstext = "Less";
 
       $('.more').each(function() {
