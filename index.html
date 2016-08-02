@@ -4,15 +4,17 @@
 	<meta charset="UTF-8">
   <title>Seasoned and Sassy | Breaking All the Fashion "Rules"</title>
 	<link rel="stylesheet" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Bad+Script|Cormorant+Garamond" rel="stylesheet">
 </head>
 <body>
+
 <header>
 		<!-- About the app -->
-		<h1>Seasoned and Sassy</h1>
+		<h1>Seasoned and Sassy ~</h1>
 		<p>Ever wonder who writes those fashion "rules"?</p>
 		<p>Ignore the self-appointed fashion police. If you want to find fashion and accessories that flaunt convention, there's no better place online than Etsy.</p>
 </header>
-
+<div class="main-container">
 <!-- get input from user -->
 <form class="etsy-search">
 	<input type="text" placeholder="e.g., jacket or jewelry..." name="terms" size="30" autofocus required>
@@ -21,28 +23,29 @@
 
 <!-- display # of results and content returned from api call -->
 <div class="search-results-qty"></div>
-<div class="results"></div>
+<div class="results listing"></div>
 
 <!-- create hidden templates to store api get results -->
 <div class="templates hidden">  <!-- 'templates' class referenced in apiget.js, 'hidden' class declared in css -->
 			<dl class="results-list itemInfo">  <!-- 'results' class declared in css, 'info' class referenced in apiget.js -->
-					<dt>Fashion Find:</dt>
+					<dt><h3>Fashion find:</h3></dt>
 					<dd class="listing-title"></dd>
 					<!-- <dt></dt>
 					<dd class="listing-img"></dd> -->
-					<dt>Why it's awesome:</dt>
+					<dt><h3>Why it's awesome:</h3></dt>
 					<dd class="listing-desc"></dd>
+					<dt><br>******************************</dt>
 			</dl>
 			<div class="error-msg">
 					<p>Uh-oh! Something went wrong with your request. Here's what we know:</p>
 			</div>
 </div>
-
+</div>
 <footer>
 		<p>The term 'Etsy' is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
-		<p>Follow Etsy</p>
 		<ul class="social">
-          <li class="social fb"><a href="https://www.facebook.com/Etsy">Facebook</a></li>
+          <li class="social">Follow Etsy: </li>
+					<li class="social fb"><a href="https://www.facebook.com/Etsy">Facebook</a></li>
           <li class="social twitter"><a href="https://www.twitter.com/etsy">Twitter</a></li>
           <li class="social pin"><a href="https://www.pinterest.com/etsy">Pinterest</a></li>
           <li class="social instagram"><a href="https://www.instagram.com/etsy">Instagram</a></li>

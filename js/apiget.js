@@ -3,6 +3,7 @@
 
     $.ajax({
         url: "https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&api_key=zzpidsxxocmwbq8elilcx1il", //specifies the domain and end point method
+//https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&includes=images:1&api_key=zzpidsxxocmwbq8elilcx1il"
         dataType: "jsonp",
         data: "GET",
     })
@@ -19,7 +20,7 @@
 
     .fail(function(jqXHR, error)  { //if request returns an error, append to DOM element
         var errorElem = showError(error);
-        $('.search-results-qty').append(errorElem);
+        // $('.search-results-qty').append(errorElem);
     });
 
   }; // end getListings
@@ -41,7 +42,7 @@
 
   // determine number of results to be appended to DOM element
   var NumSearchResults = function(query, resultNum) {
-      var resultsQty = ('<p>Showing 10 of ' + resultNum + ' results for <strong>' + query + ' </strong></p>');
+      var resultsQty = ('<p>Showing 10 of ' + resultNum + ' results for \"' + '<span class=\"search-results-query\">' + query + '</span>\"</p>');
       return resultsQty;
   };
 
