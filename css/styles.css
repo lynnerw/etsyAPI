@@ -49,8 +49,8 @@ footer {
 }
 
 header {
-    margin-top: 40px;
-    margin-bottom: 36px;
+    margin-top: 16px;
+    margin-bottom: 30px;
 }
 
 footer {
@@ -60,11 +60,9 @@ footer {
 }
 
 .etsy-search {
-	  border: 3px solid #222;
-		width: 15em;
+	  border: 2px solid #222;
+		width: 25em;
 		padding: .3em;
-		line-height: .6em;
-		font-size: .8em;
 }
 
 /* custom selectors */
@@ -109,23 +107,32 @@ footer {
 }
 
 .search-button {
-		border: 3px solid #444;
-		border-radius: 9em;
+		border: 2px solid #444;
+		border-radius: 7em;
 		width: 7em;
 		padding: .4em;
-		font-size: .6em;
+		font-size: .7em;
 		font-weight: bold;
 		line-height: .95em;
 }
 
+.search-query-box {
+		font-family: 'Cormorant Garamond', serif;
+		font-style: bold;
+		border: 1px solid #444;
+		width: 14em;
+		padding: .3em;
+		line-height: .7em;
+		font-size: 1em;
+}
+
 .search-results-qty {
+		border: 2px solid #222;
 		width: 25em;
 		background-color: #e3e3e3;
-		border-style: groove;
-		border-color: black;
-		border-width: 2px;
-		padding: 1.5px 10px;
-		margin: 1em 0 .5em 0;
+		padding: .3em;
+		line-height: .5em;
+		margin: .5em 0 .5em 0;
 }
 
 .search-results-query {
