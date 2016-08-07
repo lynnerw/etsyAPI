@@ -82,7 +82,11 @@
 
   // determine number of results to be appended to DOM element
   var NumSearchResults = function(query, resultNum) {
-      var resultsQty = ('<p>Showing ' + resultNum + ' of ' + resultNum + ' results for \"' + '<span class=\"search-results-query\">' + query + '</span>\"</p>');
+      if (resultNum > 10) {
+        var resultsQty = ('<p>Showing 10 of ' + resultNum + ' results for \"' + '<span class=\"search-results-query\">' + query + '</span>\"</p>');
+      } else {
+        var resultsQty = ('<p>Showing ' + resultNum + ' of ' + resultNum + ' results for \"' + '<span class=\"search-results-query\">' + query + '</span>\"</p>');
+      }
       return resultsQty;
   };
 

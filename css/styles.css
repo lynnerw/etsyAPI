@@ -61,8 +61,9 @@ footer {
 
 .etsy-search {
 	  border: 2px solid #222;
-		width: 25em;
+		width: 20em;
 		padding: .3em;
+    margin: 0 auto;
 }
 
 .error {
@@ -78,6 +79,10 @@ footer {
     position: relative;
     margin: 0 auto;
     padding: 5px;
+}
+
+.listing a {
+    color: #222;
 }
 
 .listing-container {
@@ -123,15 +128,16 @@ footer {
 		padding: .3em;
 		line-height: .7em;
 		font-size: 1em;
+
 }
 
 .search-results-qty {
 		border: 2px solid #222;
 		width: 25em;
 		background-color: #e3e3e3;
-		padding: .3em;
+		padding: .1em;
 		line-height: .5em;
-		margin: .5em 0 .5em 0;
+		margin: .5em auto;
 }
 
 .search-results-query {
