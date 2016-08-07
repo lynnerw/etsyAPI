@@ -82,7 +82,18 @@ footer {
 }
 
 .listing a {
-    color: #222;
+    color: #6984fc;
+    text-decoration: none;
+}
+
+.listing a:visited {
+    color: (150, 150, 150, 1);
+    text-decoration: none;
+}
+.listing a:hover {
+    color: rgba(70, 70, 70, 1);
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .listing-container {
