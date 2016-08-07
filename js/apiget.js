@@ -52,13 +52,12 @@
                var truncStr = content.substr(0, showChar);
                var remainderStr = content.substr(showChar, content.length - showChar);
 
-               var showOrNot = truncStr + '<span class="ellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + remainderStr + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+               var html = truncStr + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + remainderStr + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
 
-               $(this).html(showOrNot);
+               $(this).html(html);
            }
 
        });
-
        $(".morelink").click(function(){
            if($(this).hasClass("less")) {
                $(this).removeClass("less");
@@ -100,5 +99,4 @@ $(document).ready( function() {
 
     		getListings(searchTerms);
 	  });
-
 });
