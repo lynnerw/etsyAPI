@@ -2,7 +2,7 @@
   var getListings = function(tags) {  // string containing one or more user submitted tags
 
     $.ajax({
-        url: "https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&limit=10&includes=MainImage&api_key=zzpidsxxocmwbq8elilcx1il",
+        url: "https://openapi.etsy.com/v2/listings/active.js?keywords=unusual " + tags + "&limit=10&includes=MainImage&api_key=zzpidsxxocmwbq8elilcx1il",
         dataType: "jsonp",
         data: "GET",
     })
@@ -82,7 +82,7 @@
 
   // determine number of results to be appended to DOM element
   var NumSearchResults = function(query, resultNum) {
-      var resultsQty = ('<p>Showing 10 of ' + resultNum + ' results for \"' + '<span class=\"search-results-query\">' + query + '</span>\"</p>');
+      var resultsQty = ('<p>Showing ' + resultNum + ' of ' + resultNum + ' results for \"' + '<span class=\"search-results-query\">' + query + '</span>\"</p>');
       return resultsQty;
   };
 
