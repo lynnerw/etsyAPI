@@ -16,6 +16,8 @@
             var itemInfo = showInfo(listing);
             $('.results').append(itemInfo);
         });
+
+        truncateAll();
     })
 
     .fail(function(jqXHR, error)  { //if request returns an error, append to DOM element
@@ -38,42 +40,44 @@
       var listingDesc = result.find('.listing-desc');
       listingDesc.text(item.description).html(item.description);
 
-      // Display max of 300 chars and provide more/less option
-      var showChar = 300;
-      var ellipsestext = "...";
-      var moretext = "More";
-      var lesstext = "Less";
-
-       $('.more').each(function() {
-           var content = $(this).html();
-
-           if(content.length > showChar) {
-
-               var truncStr = content.substr(0, showChar);
-               var remainderStr = content.substr(showChar, content.length - showChar);
-
-               var html = truncStr + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + remainderStr + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
-               $(this).html(html);
-           }
-
-       });
-       $(".morelink").click(function(){
-           if($(this).hasClass("less")) {
-               $(this).removeClass("less");
-               $(this).html(moretext);
-           } else {
-               $(this).addClass("less");
-               $(this).html(lesstext);
-           }
-           $(this).parent().prev().toggle();
-           $(this).prev().toggle();
-           return false;
-       });
-
     	return result;
 
   };  // end showInfo
+
+  function truncateAll() {
+    // Display max of 300 chars and provide more/less option
+    var showChar = 300;
+    var ellipsestext = "...";
+    var moretext = "More";
+    var lesstext = "Less";
+
+     $('.more').each(function() {
+         var content = $(this).html();
+
+         if(content.length > showChar) {
+
+             var truncStr = content.substr(0, showChar);
+             var remainderStr = content.substr(showChar, content.length - showChar);
+
+             var html = truncStr + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + remainderStr + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+             $(this).html(html);
+         }
+     });
+
+     $(".morelink").click(function(){
+         if($(this).hasClass("less")) {
+             $(this).removeClass("less");
+             $(this).html(moretext);
+         } else {
+             $(this).addClass("less");
+             $(this).html(lesstext);
+         }
+         $(this).parent().prev().toggle();
+         $(this).prev().toggle();
+         return false;
+     });
+  }
 
 
   // determine number of results to be appended to DOM element
@@ -98,5 +102,6 @@ $(document).ready( function() {
     		var searchTerms = $(this).find("input[name='terms']").val();
 
     		getListings(searchTerms);
+        //some code
 	  });
 });
